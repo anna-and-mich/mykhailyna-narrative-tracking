@@ -6,7 +6,7 @@ export function PlotLegend() {
         <span>Telegram</span>
       </div>
       <div className="flex items-center gap-1.5">
-        <span className="h-2.5 w-2.5 rounded-full" style={{ background: "hsl(220, 10%, 20%)" }} />
+        <span className="h-2.5 w-2.5 rounded-full" style={{ background: "hsl(0, 0%, 95%)" }} />
         <span>X</span>
       </div>
       <div className="flex items-center gap-1.5">
