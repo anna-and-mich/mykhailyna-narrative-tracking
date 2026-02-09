@@ -9,7 +9,7 @@ import { PlotLegend } from "@/components/PlotLegend";
 import { Slider } from "@/components/ui/slider";
 import { Loader2 } from "lucide-react";
 
-const ZOOM_LABEL_THRESHOLD_DEFAULT = 0.5;
+const ZOOM_LABEL_THRESHOLD_DEFAULT = 0.1;
 
 const Index = () => {
   const [payload, setPayload] = useState<Payload | null>(null);

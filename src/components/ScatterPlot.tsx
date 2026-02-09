@@ -120,16 +120,23 @@ export function ScatterPlot({
           : visible;
 
         setAnnotations(
-          labelled.map(p => ({
-            x: p.tsne[0],
-            y: p.tsne[1],
-            text: p.description_text.length > 40
-              ? p.description_text.slice(0, 37) + "..."
-              : p.description_text,
-            showarrow: false,
-            font: { size: 8, color: "hsl(210,20%,70%)" },
-            yshift: 10,
-          }))
+          labelled.map(p => {
+            const words = p.description_text.split(/\s+/);
+            const numLines = Math.max(1, Math.floor(Math.sqrt(words.length)));
+            const wordsPerLine = Math.ceil(words.length / numLines);
+            const lines: string[] = [];
+            for (let i = 0; i < words.length; i += wordsPerLine) {
+              lines.push(words.slice(i, i + wordsPerLine).join(" "));
+            }
+            return {
+              x: p.tsne[0],
+              y: p.tsne[1],
+              text: lines.join("<br>"),
+              showarrow: false,
+              font: { size: 8, color: "hsl(210,20%,70%)" },
+              yshift: 10,
+            };
+          })
         );
       } else {
         setAnnotations([]);
@@ -138,15 +145,16 @@ export function ScatterPlot({
     [points, zoomThreshold, xRange, yRange]
   );
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setAnnotations([]);
+    // Force Plotly to reset by bumping revision — layout already has initial ranges
     setRevision(r => r + 1);
-  };
+  }, []);
 
   const layout: Partial<Plotly.Layout> = useMemo(
     () => ({
       xaxis: {
-        range: xRange,
+        range: [...xRange],
         showgrid: true,
         gridcolor: "hsl(220,15%,14%)",
         zeroline: false,
@@ -154,7 +162,7 @@ export function ScatterPlot({
         tickfont: { size: 9 },
       },
       yaxis: {
-        range: yRange,
+        range: [...yRange],
         showgrid: true,
         gridcolor: "hsl(220,15%,14%)",
         zeroline: false,
@@ -167,8 +175,11 @@ export function ScatterPlot({
       dragmode: "pan" as const,
       hovermode: "closest" as const,
       annotations,
+      autosize: true,
+      height: undefined,
     }),
-    [xRange, yRange, annotations]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [xRange, yRange, annotations, revision]
   );
 
   return (

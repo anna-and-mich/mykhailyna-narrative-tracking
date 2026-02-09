@@ -62,6 +62,6 @@ export function getConfigOptions<T>(
 
 export function getPlatformColor(platform: string): string {
   if (platform === "Telegram") return "hsl(210, 90%, 55%)";
-  if (platform === "X") return "hsl(220, 10%, 20%)";
+  if (platform === "X") return "hsl(0, 0%, 95%)";
   return "hsl(270, 60%, 55%)";
 }
