@@ -23,7 +23,7 @@ const Index = () => {
   const [showOnlyOpinionGroup, setShowOnlyOpinionGroup] = useState(false);
 
   useEffect(() => {
-    loadPayload("/data/payload_20.json.gz")
+    loadPayload(`${import.meta.env.BASE_URL}data/payload_20.json.gz`)
       .then(p => {
         setPayload(p);
         const def = getDefaultGroup(p.selected_groups);
