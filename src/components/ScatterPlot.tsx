@@ -1,5 +1,5 @@
 import { useMemo, useCallback, useState, useRef, useEffect } from "react";
-import Plot from "react-plotly.js";
+import Plot from "@/components/PlotlyWrapper";
 import type { DataPoint } from "@/lib/types";
 import { getPlatformColor } from "@/lib/dataHelpers";
 import type { Layout } from "plotly.js";
@@ -201,7 +201,7 @@ export function ScatterPlot({
           </div>
         ) : (
           <Plot
-            ref={plotRef}
+            
             data={traces}
             layout={layout}
             config={{
