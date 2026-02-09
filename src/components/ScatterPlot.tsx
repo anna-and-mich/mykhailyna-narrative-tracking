@@ -187,7 +187,6 @@ export function ScatterPlot({
       width: plotSize?.w,
       height: plotSize?.h,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [view, annotations, revision, title]
   );
 
