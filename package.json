@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://anna-and-mich.github.io/mykhailyna.github.io/",
+  "homepage": "https://anna-and-mich.github.io/mykhailyna-narrative-tracking/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

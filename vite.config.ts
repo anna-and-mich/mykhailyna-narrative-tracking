@@ -12,7 +12,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react()].filter(Boolean),
-  base: "/mykhailyna.github.io/",
+  base: "/mykhailyna-narrative-tracking/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
