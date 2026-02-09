@@ -32,10 +32,6 @@ export function GroupDetails({ group }: GroupDetailsProps) {
               <div className="stat-value">{group.total_mentions.toLocaleString()}</div>
             </div>
             <div className="stat-card">
-              <div className="stat-label flex items-center gap-1"><Users className="h-3 w-3" /> Members</div>
-              <div className="stat-value">{group.n_members}</div>
-            </div>
-            <div className="stat-card">
               <div className="stat-label flex items-center gap-1"><Calendar className="h-3 w-3" /> Events</div>
               <div className="stat-value">{group.event_uids.length}</div>
             </div>
