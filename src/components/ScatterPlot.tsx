@@ -128,15 +128,13 @@ export function ScatterPlot({
             return {
               x: p.tsne[0],
               y: p.tsne[1],
-              text: wrapBySqrtWords(p.description_text),
+              text: `${wrapBySqrtWords(p.description_text)}<br>Source: ${p.db_platform}`,
               showarrow: false,
               bgcolor: "rgba(0,0,0,0.65)",           // background
-              bordercolor: "rgba(255,255,255,0.25)", // border
+              bordercolor: getPlatformColor(p.db_platform),
               borderwidth: 1,
               borderpad: 4,
               font: { size: 10, color: "rgba(255,255,255,0.9)" },
-              // font: { size: 8, color: "hsl(210,20%,70%)" },
-              // yshift: 10,
             };
           })
         );
